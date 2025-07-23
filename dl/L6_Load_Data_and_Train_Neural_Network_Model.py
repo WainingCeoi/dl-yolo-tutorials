@@ -1,9 +1,11 @@
+import time
 import matplotlib.pyplot as plt
 import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+t1 = time.time()
 # Create a Model Class that Inherits nn.Module
 class Model(nn.Module):
     """
@@ -93,4 +95,7 @@ plt.plot(range(epochs), losses)
 plt.ylabel("Loss/Error")
 plt.xlabel("Epochs")
 plt.title("Learning Curve")
-plt.show()
+# plt.show()
+
+t2 = time.time()
+print(f"{(t2-t1):.4f}")
