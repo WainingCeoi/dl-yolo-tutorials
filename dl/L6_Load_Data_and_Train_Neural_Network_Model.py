@@ -1,11 +1,10 @@
-import time
 import matplotlib.pyplot as plt
 import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-t1 = time.time()
+
 # Create a Model Class that Inherits nn.Module
 class Model(nn.Module):
     """
@@ -29,7 +28,7 @@ class Model(nn.Module):
 torch.manual_seed(43)
 
 # Create an instance of Model and put to Mac GPU, calls "mps"
-model = Model().to("mps")
+model = Model()
 
 # --- Above Code are Copied from Last Lecture ---
 # --- Below Code are for this Lecture ---
@@ -44,7 +43,7 @@ X = iris.data.astype(np.float32)
 y = iris.target.astype(np.int_)
 
 # Method 1: Concisely, Recommended
-X_train, X_test, y_train, y_test = [torch.tensor(data, device="mps") for data in train_test_split(X, y)]
+X_train, X_test, y_train, y_test = [torch.tensor(data) for data in train_test_split(X, y)]
 
 '''
 Method 2: Originally, Not Recommended
@@ -75,7 +74,7 @@ for i in range(epochs):
     y_pred = model.forward(X_train)
 
     # Measure the loss/error, gonna be high at first
-    loss = criterion(y_pred, y_train).to("cpu") # Predicted valves vs training values
+    loss = criterion(y_pred, y_train) # Predicted valves vs training values
 
     # Keep track of our losses
     losses.append(loss.detach().numpy())
@@ -95,7 +94,4 @@ plt.plot(range(epochs), losses)
 plt.ylabel("Loss/Error")
 plt.xlabel("Epochs")
 plt.title("Learning Curve")
-# plt.show()
-
-t2 = time.time()
-print(f"{(t2-t1):.4f}")
+plt.show()
