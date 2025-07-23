@@ -39,7 +39,9 @@ from sklearn.model_selection import train_test_split
 iris = load_iris()
 
 # Set X, y. Split train and test datasets. Convert into Tensor
+# Default is float64, but tensor only support float32. Must convert to float 32 or will cause error
 X = iris.data.astype(np.float32)
+# Default is int64, can convert to float32 or numpy int_, won't cause error if not make changes
 y = iris.target.astype(np.int_)
 
 # Method 1: Concisely, Recommended
