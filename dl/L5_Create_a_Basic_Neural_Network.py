@@ -4,10 +4,10 @@ import torch.nn.functional as F
 
 # Create a Model Class that Inherits nn.Module
 class Model(nn.Module):
-    '''
+    """
     Input Layer (4 Features of Iris) --> Hidden Layer 1 (Number of Neurons) -->
-    Hidden Layer 2 (Numeber of Neurons) --> Output (3 Classes of Iris)
-    '''
+    Hidden Layer 2 (Number of Neurons) --> Output (3 Classes of Iris)
+    """
     def __init__(self, input_features=4, h1=8, h2=9, output_features=3):
         super().__init__() # Instantiate our nn.Module
         self.fc1 = nn.Linear(input_features, h1)
