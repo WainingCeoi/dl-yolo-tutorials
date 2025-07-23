@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
+import torch.nn.functional as f
 
 
 # Create a Model Class that Inherits nn.Module
@@ -18,8 +18,8 @@ class Model(nn.Module):
         self.out = nn.Linear(h2, output_features)
 
     def forward(self, x):
-        x = F.relu(self.fc1(x))
-        x = F.relu(self.fc2(x))
+        x = f.relu(self.fc1(x))
+        x = f.relu(self.fc2(x))
         x = self.out(x)
 
         return x
@@ -68,15 +68,15 @@ criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
 
 # Train our model
-# Epochs: one run thru all the training data in our network
+# Epochs: one run through all the training data in our network
 epochs = 200
 losses = []
 for i in range(epochs):
     # Go forward and get a prediction
-    y_pred = model.forward(X_train)
+    y_prediction = model.forward(X_train)
 
-    # Measure the loss/error, gonna be high at first
-    loss = criterion(y_pred, y_train) # Predicted valves vs training values
+    # Measure the loss/error, going to be high at first
+    loss = criterion(y_prediction, y_train) # Predicted valves vs training values
 
     # Keep track of our losses
     losses.append(loss.detach().numpy())
@@ -86,7 +86,7 @@ for i in range(epochs):
         print(f"Epoch: {i+1}, loss: {loss:.4f}")
 
     # Do some back propagation: take the error rate of forward propagation and
-    # feed it back thru the network to find tune weights
+    # feed it back through the network to find tune weights
     optimizer.zero_grad()
     loss.backward()
     optimizer.step()
