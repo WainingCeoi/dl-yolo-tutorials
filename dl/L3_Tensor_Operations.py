@@ -25,7 +25,7 @@ print(my_torch2.reshape([3, -1]))
 print(my_torch2.reshape([-1, 3]))
 
 
-# S4: With reshape and view, relative tensors will update if original tensors make changes. (Also apply to NumPy Array)
+# S4: With reshape and view, relative tensors will update if original tensors make changes. Also apply to NumPy, Pandas
 my_torch3 = torch.arange(10)
 my_torch4 = my_torch3.reshape([2, 5])
 print(my_torch3)
