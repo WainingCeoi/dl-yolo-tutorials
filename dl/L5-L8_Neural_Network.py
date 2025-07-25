@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as f
@@ -33,17 +32,20 @@ model = Model()
 
 
 '''Lecture 6: Load Data and Train Neural Network Model'''
-from sklearn.datasets import load_iris
+# from sklearn.datasets import load_iris
+import pandas as pd
+import numpy as np
 from sklearn.model_selection import train_test_split
 
 # Load iris datasets
-iris = load_iris()
+iris = pd.read_csv(r"./Datasets/Iris.csv")
+iris["variety"], uniques = pd.factorize(iris["variety"])
 
 # Set X, y. Split train and test datasets. Convert into Tensor
 # Default is float64, but tensor only support float32. Must convert to float 32 or will cause error
-X = iris.data.astype(np.float32)
+X = iris.drop(columns="variety").astype(np.float32).to_numpy()
 # Default is int64, can convert to float32 or numpy int_, won't cause error if not make changes
-y = iris.target.astype(np.int_)
+y = iris["variety"].astype(np.int_).to_numpy()
 
 # Method 1: Concisely, Recommended
 X_train, X_test, y_train, y_test = [torch.tensor(data) for data in train_test_split(X, y)]
@@ -97,7 +99,7 @@ plt.plot(range(epochs), losses)
 plt.ylabel("Loss/Error")
 plt.xlabel("Epochs")
 plt.title("Learning Curve")
-# plt.show()
+plt.show()
 
 
 '''Lecture 7: Evaluate Test Data Set on Network'''
@@ -113,9 +115,28 @@ with torch.no_grad():
         y_val = model.forward(data)
 
         # Will tell us what type of flower class our network thinks it is
-        print(f"{idx+1}:\t{y_val} \t {y_val.argmax()} \t {y_test[idx]}")
+        '''
+        Quick note for .item() Method:
+        This method is used to extract the value from a single-element array or tensor as a standard Python scalar.
+        It is particularly useful when the argmax() operation results in a single index
+        e.g., from a 1D array or when finding the maximum across a specific dimension that 
+        collapses the output to a single value.
+        '''
+        print(f"{idx+1}:\t{y_val} \t {uniques[y_val.argmax().item()]} \t {uniques[y_test[idx].item()]}")
 
         if y_val.argmax() == y_test[idx]:
             correct += 1
 
     print(f"We got {correct}/{len(y_test)} corrects!")
+
+
+'''Lecture 8: New Data on the Network'''
+new_iris1 = torch.tensor([4.7, 3.2, 1.3, 0.2])
+with torch.no_grad():
+    iris1_tensor = model.forward(new_iris1)
+    print(f"{iris1_tensor} \t {uniques[iris1_tensor.argmax().item()]}")
+
+new_iris2 = torch.tensor([5.9, 3.0, 5.1, 1.8])
+with torch.no_grad():
+    iris2_tensor = model.forward(new_iris2)
+    print(f"{iris2_tensor} \t {uniques[iris2_tensor.argmax().item()]}")
