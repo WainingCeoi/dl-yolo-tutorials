@@ -5,6 +5,7 @@ import torch.nn as nn
 import torch.nn.functional as f
 
 
+'''Lecture 5: Create a Basic Neural Network'''
 # Create a Model Class that Inherits nn.Module
 class Model(nn.Module):
     """
@@ -30,8 +31,8 @@ torch.manual_seed(43)
 # Create an instance of Model and put to Mac GPU, calls "mps"
 model = Model()
 
-# --- Above Code are Copied from Last Lecture ---
-# --- Below Code are for this Lecture ---
+
+'''Lecture 6: Load Data and Train Neural Network Model'''
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 
@@ -75,20 +76,20 @@ for i in range(epochs):
     # Go forward and get a prediction
     y_prediction = model.forward(X_train)
 
-    # Measure the loss/error, going to be high at first
-    loss = criterion(y_prediction, y_train) # Predicted valves vs training values
+    # Measure the train_loss/error, going to be high at first
+    train_loss = criterion(y_prediction, y_train) # Predicted valves vs training values
 
     # Keep track of our losses
-    losses.append(loss.detach().numpy())
+    losses.append(train_loss.detach().numpy())
 
     # print each epoch
     if (i+1) % 10 == 0:
-        print(f"Epoch: {i+1}, loss: {loss:.4f}")
+        print(f"Epoch: {i+1}, train_loss: {train_loss:.4f}")
 
     # Do some back propagation: take the error rate of forward propagation and
     # feed it back through the network to find tune weights
     optimizer.zero_grad()
-    loss.backward()
+    train_loss.backward()
     optimizer.step()
 
 # Graph it out
@@ -96,4 +97,25 @@ plt.plot(range(epochs), losses)
 plt.ylabel("Loss/Error")
 plt.xlabel("Epochs")
 plt.title("Learning Curve")
-plt.show()
+# plt.show()
+
+
+'''Lecture 7: Evaluate Test Data Set on Network'''
+# Evaluate Model on Test Data Set (Validate Model on Test Set)
+with torch.no_grad(): # Basically turn fof back propagation
+    y_eval = model.forward(X_test) # X_test are feature from out test set, y_eval will be prediction
+    test_loss = criterion(y_eval, y_test) # Find the train_loss or error
+    print(test_loss)
+
+correct = 0
+with torch.no_grad():
+    for idx, data in enumerate(X_test):
+        y_val = model.forward(data)
+
+        # Will tell us what type of flower class our network thinks it is
+        print(f"{idx+1}:\t{y_val} \t {y_val.argmax()} \t {y_test[idx]}")
+
+        if y_val.argmax() == y_test[idx]:
+            correct += 1
+
+    print(f"We got {correct}/{len(y_test)} corrects!")
