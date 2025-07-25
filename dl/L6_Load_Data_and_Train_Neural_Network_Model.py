@@ -65,7 +65,7 @@ y_test = torch.tensor(y_test)
 criterion = nn.CrossEntropyLoss()
 # Choose Adam optimizer, lr = learning rate
 # If error doesn't go down after a bunch of iteration (epochs), lower learning rate
-optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
+optimizer = torch.optim.Adam(model.parameters(), lr=0.1)
 
 # Train our model
 # Epochs: one run through all the training data in our network
