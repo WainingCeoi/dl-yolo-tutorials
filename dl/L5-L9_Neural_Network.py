@@ -32,7 +32,6 @@ model = Model()
 
 
 '''Lecture 6: Load Data and Train Neural Network Model'''
-# from sklearn.datasets import load_iris
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
@@ -104,7 +103,7 @@ plt.show()
 
 '''Lecture 7: Evaluate Test Data Set on Network'''
 # Evaluate Model on Test Data Set (Validate Model on Test Set)
-with torch.no_grad(): # Basically turn fof back propagation
+with torch.no_grad(): # Basically turn off back propagation
     y_eval = model.forward(X_test) # X_test are feature from out test set, y_eval will be prediction
     test_loss = criterion(y_eval, y_test) # Find the train_loss or error
     print(test_loss)
@@ -140,3 +139,19 @@ new_iris2 = torch.tensor([5.9, 3.0, 5.1, 1.8])
 with torch.no_grad():
     iris2_tensor = model.forward(new_iris2)
     print(f"{iris2_tensor} \t {uniques[iris2_tensor.argmax().item()]}")
+
+
+'''Lecture 9: Save and Load our Neural Network Model'''
+# Save our NN Model
+torch.save(model.state_dict(), "Iris_NN_Model.pt")
+
+# Load the saved Model
+new_model = Model()
+new_model.load_state_dict(torch.load("Iris_NN_Model.pt", weights_only=True))
+
+# make sure it loaded correctly
+print(new_model.eval())
+new_iris3 = torch.tensor([4.8, 3.5, 1.2, 0.5])
+with torch.no_grad():
+    iris3_tensor = new_model.forward(new_iris3)
+    print(f"{iris3_tensor} \t {uniques[iris3_tensor.argmax().item()]}")
