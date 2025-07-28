@@ -3,7 +3,7 @@ import sys
 import matplotlib.pyplot as plt
 import torch
 import torch.nn as nn
-import torch.nn.functional as f
+import torch.nn.functional as F
 from tqdm.auto import  tqdm
 
 
@@ -21,8 +21,8 @@ class Model(nn.Module):
         self.out = nn.Linear(h2, output_features)
 
     def forward(self, x):
-        x = f.relu(self.fc1(x))
-        x = f.relu(self.fc2(x))
+        x = F.relu(self.fc1(x))
+        x = F.relu(self.fc2(x))
         x = self.out(x)
 
         return x
