@@ -1,7 +1,10 @@
+import sys
+
 import matplotlib.pyplot as plt
 import torch
 import torch.nn as nn
 import torch.nn.functional as f
+from tqdm.auto import  tqdm
 
 
 '''Lecture 5: Create a Basic Neural Network'''
@@ -25,7 +28,7 @@ class Model(nn.Module):
         return x
 
 # Pick a manual seed for randomization
-torch.manual_seed(43)
+torch.manual_seed(42)
 
 # Create an instance of Model and put to Mac GPU, calls "mps"
 model = Model()
@@ -47,7 +50,7 @@ X = iris.drop(columns="variety").astype(np.float32).to_numpy()
 y = iris["variety"].astype(np.int_).to_numpy()
 
 # Method 1: Concisely, Recommended
-X_train, X_test, y_train, y_test = [torch.tensor(data) for data in train_test_split(X, y)]
+X_train, X_test, y_train, y_test = [torch.tensor(data) for data in train_test_split(X, y, random_state=48)]
 
 '''
 Method 2: Originally, Not Recommended
@@ -73,7 +76,9 @@ optimizer = torch.optim.Adam(model.parameters(), lr=0.1)
 # Epochs: one run through all the training data in our network
 epochs = 200
 losses = []
-for i in range(epochs):
+# Use tqdm to show training progress
+pbar = tqdm(range(epochs), desc="Training Progress", unit="epochs", file=sys.stdout)
+for i in pbar:
     # Go forward and get a prediction
     y_prediction = model.forward(X_train)
 
@@ -81,11 +86,10 @@ for i in range(epochs):
     train_loss = criterion(y_prediction, y_train) # Predicted valves vs training values
 
     # Keep track of our losses
-    losses.append(train_loss.detach().numpy())
+    losses.append(train_loss.item())
 
-    # print each epoch
-    if (i+1) % 10 == 0:
-        print(f"Epoch: {i+1}, train_loss: {train_loss:.4f}")
+    # print each epoch loss
+    pbar.set_postfix(loss=f"{train_loss:.4f}")
 
     # Do some back propagation: take the error rate of forward propagation and
     # feed it back through the network to find tune weights
