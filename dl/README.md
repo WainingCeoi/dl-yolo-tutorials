@@ -22,6 +22,8 @@
 * Lecture 15: Convolutional and Pooling Layers
 * Lecture 16: Convolutional Neural Network Model
 * Lecture 17: Train and Test CNN Model
+* Lecture 18: Graph CNN Result
+* Lecture 19: Send New Image Through the Model
 
 ## Lecture Videos - By Codemy.com
 https://youtube.com/playlist?list=PLCC34OHNcOtpcgR9LEYSdi9r7XIbpkpK1&si=flyEJBRFK5NqtmLd
