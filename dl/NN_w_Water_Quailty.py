@@ -40,7 +40,7 @@ optimizor = torch.optim.Adam(model.parameters(), lr=0.0001)
 epochs = 1000
 train_losses = []
 train_accuracies = []
-pbar = tqdm(range(epochs), desc="Trainning Progress", unit="epochs", file=sys.stdout)
+pbar = tqdm(range(epochs), desc="Training Progress", unit="epochs", file=sys.stdout)
 t0 = time()
 for idx in pbar:
     y_pred = model(X_train)
