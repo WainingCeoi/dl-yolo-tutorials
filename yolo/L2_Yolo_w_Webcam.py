@@ -1,3 +1,5 @@
+"""Lecture 2: Yolo with Webcam"""
+
 from ultralytics import YOLO
 import cv2
 
