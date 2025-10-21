@@ -5,7 +5,7 @@ import cv2
 
 
 # For Webcam
-cap = cv2.VideoCapture(1) # 0 for Mac, 1 for iPhone (Continuity Camera)
+cap = cv2.VideoCapture(0) # 0 for Mac, 1 for iPhone (Continuity Camera)
 cap.set(3, 1280)
 cap.set(4, 720)
 
