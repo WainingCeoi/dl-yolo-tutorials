@@ -16,7 +16,7 @@ model = YOLO("Yolo_Models/yolo11s.pt")
 
 while True:
     success, frame = cap.read()
-    results = model(frame, stream=True)
+    results = model(frame, stream=True, device="mps")
     for result in results:
         cv2.imshow("YOLO Detection Model (Press \"Q\" to Quit)", result.plot())
     if cv2.waitKey(1) & 0xFF == ord('q'):
