@@ -1,0 +1,13 @@
+name: yolo
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - jupyterlab
+  - notebook
+  - python=3.13
+  - pytorch
+  - scikit-learn
+  - seaborn
+  - torchvision=0.22
+  - ultralytics
