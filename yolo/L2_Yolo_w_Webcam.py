@@ -16,6 +16,9 @@ model = YOLO("Yolo_Models/yolo11s.pt")
 
 while True:
     success, frame = cap.read()
+    if not success:
+        print("Video frame is empty or Processing is complete.")
+        break
     results = model(frame, stream=True, device="mps")
     for result in results:
         cv2.imshow("YOLO Detection Model (Press \"Q\" to Quit)", result.plot())
