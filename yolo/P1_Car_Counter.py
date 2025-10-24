@@ -14,12 +14,13 @@ targeted_obj = ["car", "motorcycle", "bus", "truck"]
 classes_idx = [classes_name.index(obj) for obj in targeted_obj] # Obtain object ID
 
 confidence = 0.5
+device = "mps"
 # Define Region of Interest (ROI)
 region = [[430, 260], [700, 260], [670, 600], [20, 600]]
 
 # Initial and configure car counter
 counter = ObjectCounter(model=model, region=region, classes=classes_idx, conf=confidence,
-                        device="mps", show=True)
+                        device=device, show=True)
 
 
 while True:
