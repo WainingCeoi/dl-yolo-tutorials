@@ -5,9 +5,7 @@ channels:
 dependencies:
   - jupyterlab
   - notebook
-  - python=3.13
+  - python
   - pytorch
-  - scikit-learn
-  - seaborn
-  - torchvision=0.22
+  - torchvision
   - ultralytics
