@@ -1,5 +1,4 @@
 """Lecture 1: Running Yolo"""
-
 from ultralytics import YOLO
 
 
