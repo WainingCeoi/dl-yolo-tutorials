@@ -23,9 +23,12 @@ counter = ObjectCounter(model=model, region=region, classes=classes_idx, conf=co
                         device=device, show=True)
 
 
-while True:
+while cap.isOpened():
     success, frame = cap.read()
     if not success:
         print("Video frame is empty or Processing is complete.")
         break
     results = counter(frame)
+
+cap.release()
+cv2.destroyAllWindows()
