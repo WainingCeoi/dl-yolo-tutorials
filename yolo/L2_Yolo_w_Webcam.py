@@ -13,7 +13,7 @@ cap.set(4, 720)
 
 model = YOLO("Yolo_Models/yolo11s.pt")
 
-while True:
+while cap.isOpened():
     success, frame = cap.read()
     if not success:
         print("Video frame is empty or Processing is complete.")
@@ -23,3 +23,6 @@ while True:
         cv2.imshow("YOLO Detection Model (Press \"Q\" to Quit)", result.plot())
     if cv2.waitKey(1) == ord('q'):
         break
+
+cap.release()
+cv2.destroyWindow()
