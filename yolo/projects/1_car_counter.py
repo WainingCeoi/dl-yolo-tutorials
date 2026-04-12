@@ -5,8 +5,8 @@ import cv2
 
 
 # Load the pre-trained YOLO model
-model = YOLO("Yolo_Models/yolo11s.pt")
-cap = cv2.VideoCapture("Videos/cars.mp4")
+model = YOLO("../yolo_models/yolo11s.pt")
+cap = cv2.VideoCapture("../videos/cars.mp4")
 
 # Specific objects with string instead of theirs ID to enhance readability.
 classes_name = list(model.names.values())
@@ -14,7 +14,7 @@ targeted_obj = ["car", "motorcycle", "bus", "truck"]
 classes_idx = [classes_name.index(obj) for obj in targeted_obj] # Obtain object ID
 
 confidence = 0.5
-device = "mps"
+device = "cpu"
 # Define Region of Interest (ROI)
 region = [[430, 260], [700, 260], [670, 600], [20, 600]]
 
