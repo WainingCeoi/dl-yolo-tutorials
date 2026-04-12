@@ -18,7 +18,7 @@ while cap.isOpened():
     if not success:
         print("Video frame is empty or Processing is complete.")
         break
-    results = model(frame, stream=True)
+    results = model(frame, stream=True, device="cpu")
     for result in results:
         cv2.imshow("YOLO Detection Model (Press \"Q\" to Quit)", result.plot())
     if cv2.waitKey(1) == ord('q'):
