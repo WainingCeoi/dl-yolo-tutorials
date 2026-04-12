@@ -1,1 +1,0 @@
-# Please note that Yolo models will be downloaded when run the relevant models.
