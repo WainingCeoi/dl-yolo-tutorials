@@ -1,0 +1,12 @@
+[project]
+name = "yolo-tutorial"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "notebook>=7.5.5",
+    "torch>=2.2.2",
+    "torchvision>=0.17.2",
+    "ultralytics>=8.4.37",
+]
