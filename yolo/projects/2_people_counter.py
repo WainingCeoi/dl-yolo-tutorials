@@ -4,13 +4,13 @@ from ultralytics import YOLO
 from ultralytics.solutions import ObjectCounter
 
 
-# Confi Parameters
-model = YOLO("Yolo_Models/yolo11s.pt")
-cap = cv2.VideoCapture("Videos/people.mp4")
+# Config Parameters
+model = YOLO("../yolo_models/yolo11s.pt")
+cap = cv2.VideoCapture("../videos/people.mp4")
 
 class_id = [0]
 confidence = 0.5
-device = "mps"
+device = "cpu"
 line_points = [[150, 500], [680, 320]]
 
 # Initial Models
