@@ -10,7 +10,7 @@ from time import time
 import sys
 
 
-df = pd.read_csv(r"./Datasets/Water Quality.csv").dropna()
+df = pd.read_csv(r"../datasets/water_quality.csv").dropna()
 
 assert df.isna().sum().sum() == 0
 X = df.drop(columns="Potability").astype(np.float32).to_numpy()
