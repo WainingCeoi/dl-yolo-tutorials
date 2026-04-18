@@ -5,7 +5,7 @@ from ultralytics.solutions import ObjectCounter
 
 
 # Config Parameters
-model = YOLO("../yolo_models/yolo11s.pt")
+model = YOLO("../yolo_models/yolo26s.pt")
 cap = cv2.VideoCapture("../videos/people.mp4")
 
 class_id = [0]
