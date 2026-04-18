@@ -11,7 +11,7 @@ cap.set(4, 720)
 # For Video
 # cap = cv2.VideoCapture("Videos/bikes.mp4")
 
-model = YOLO("../yolo_models/yolo11s.pt")
+model = YOLO("../yolo_models/yolo26s.pt")
 
 while cap.isOpened():
     success, frame = cap.read()
