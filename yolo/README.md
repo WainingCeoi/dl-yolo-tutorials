@@ -10,7 +10,6 @@ This is an exercise for learning how to deploy yolo models
 * Project 1: Car Counter
 * Project 2: People Counter
 * Project 3: Personal Protective Equipment Detector (Custom Training)
-  * https://universe.roboflow.com/roboflow-universe-projects/construction-site-safety/dataset/28
 * Project 4: Poker Hand Detector
 
 # Reference
