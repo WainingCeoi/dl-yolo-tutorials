@@ -2,5 +2,5 @@
 from ultralytics import YOLO
 
 
-model = YOLO("../yolo_models/yolo11s.pt")
+model = YOLO("../yolo_models/yolo26s.pt")
 results = model("../images/1.jpg")[0].show()
