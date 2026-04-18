@@ -13,9 +13,11 @@ This is an exercise for learning how to deploy yolo models
 * Project 4: Poker Hand Detector
 
 # Reference
-* https://youtu.be/WgPbbWmnXJ8?si=8t5mJGoF42n2yKQt
-* https://docs.ultralytics.com/
-* https://docs.ultralytics.com/solutions/
-* Label your images
-  * https://labelstud.io/
-  * Launch Label Studio by run command: ```uv run label-studio```
+## Tutorial Video
+https://youtu.be/WgPbbWmnXJ8?si=8t5mJGoF42n2yKQt
+## Yolo Docs
+1. https://docs.ultralytics.com/
+2. https://docs.ultralytics.com/solutions/
+## Label your images:
+1. https://labelstud.io/
+2. Launch Label Studio by run command: ```uv run label-studio```
