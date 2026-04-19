@@ -2,7 +2,6 @@
 from ultralytics import YOLO
 
 
-
 # For webcam
 video_source = 0 # 0 for Mac, 1 for iPhone (Continuity Camera)
 
