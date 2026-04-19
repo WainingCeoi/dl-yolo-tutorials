@@ -20,4 +20,4 @@ https://youtu.be/WgPbbWmnXJ8?si=8t5mJGoF42n2yKQt
 2. https://docs.ultralytics.com/solutions/
 ## Label Images
 1. https://labelstud.io/
-2. Launch Label Studio by run command: ```uv run label-studio```
+2. Launch Label Studio by running command: ```uv run label-studio```
