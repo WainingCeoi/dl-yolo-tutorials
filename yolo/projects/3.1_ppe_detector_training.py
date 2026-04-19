@@ -7,7 +7,6 @@ model = YOLO("../yolo_models/yolo26n.pt")
 
 results = model.train(
     data="../datasets/construction_site_safety/data.yaml",
-    project="../../trained_models/ppe_detector",
     epochs=5,
     imgsz=640,
     workers = 6,
