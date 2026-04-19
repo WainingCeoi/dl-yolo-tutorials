@@ -3,13 +3,14 @@ from ultralytics import YOLO
 
 
 # Custom data training
-model = YOLO("../yolo_models/yolo26s.pt")
+model = YOLO("../yolo_models/yolo26n.pt")
 
 results = model.train(
     data="../datasets/construction_site_safety/data.yaml",
-    epochs=50,
+    project="../../trained_models/ppe_detector",
+    epochs=5,
     imgsz=640,
-    batch=10,
-    workers = 4,
-    device = "mps"
+    workers = 6,
+    device = "cpu",
+    resume = True
 )
