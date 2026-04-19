@@ -9,7 +9,7 @@ cap.set(3, 1280)
 cap.set(4, 720)
 
 # For Video
-# cap = cv2.VideoCapture("Videos/bikes.mp4")
+cap = cv2.VideoCapture("../videos/bikes.mp4")
 
 model = YOLO("../yolo_models/yolo26s.pt")
 
