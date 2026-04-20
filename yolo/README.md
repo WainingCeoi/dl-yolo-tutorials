@@ -1,12 +1,12 @@
 # Yolo Tutorial
-This is an exercise for learning how to deploy yolo models
+This is an exercise for learning how to deploy and train yolo models by giving custom datasets.
 
 # Contents
-## Lecture
+## Lectures
 * Lecture 1: Running Yolo
 * Lecture 2: Yolo with Webcam
 
-## Project
+## Projects
 * Project 1: Car Counter
 * Project 2: People Counter
 * Project 3: Personal Protective Equipment Detector (Custom Training)
