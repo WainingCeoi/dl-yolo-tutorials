@@ -6,7 +6,7 @@ import cv2
 
 # Load the pre-trained YOLO model
 model = YOLO("../yolo_models/yolo26s.pt")
-cap = cv2.VideoCapture("../videos/cars.mp4")
+cap = cv2.VideoCapture("../datasets/videos/cars.mp4")
 
 # Specific objects with string instead of theirs ID to enhance readability.
 classes_name = list(model.names.values())
