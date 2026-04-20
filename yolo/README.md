@@ -23,3 +23,5 @@ https://youtu.be/WgPbbWmnXJ8?si=8t5mJGoF42n2yKQt
 ## Label Images
 1. https://labelstud.io/
 2. Launch Label Studio by running command: ```uv run label-studio```
+## Open Source CV Datasets and APIs
+https://universe.roboflow.com/
