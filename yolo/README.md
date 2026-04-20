@@ -11,7 +11,8 @@ This is an exercise for learning how to deploy yolo models
 * Project 2: People Counter
 * Project 3: Personal Protective Equipment Detector (Custom Training)
 * Project 4: Poker Hand Detector (Skipped)
-* Note: Project 4 is not mainly focus on thingy with yolo model. This project is mainly focus on algorithm design. 
+  * This project is not mainly focus on thingy with yolo model. 
+  * This project is mainly focus on algorithm design that return max hand by giving ramdom poker cards.
 
 # Reference
 ## Tutorial video
