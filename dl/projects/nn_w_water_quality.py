@@ -1,13 +1,13 @@
+import sys
+from time import time
+
+import numpy as np
+import pandas as pd
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from sklearn.model_selection import train_test_split
-
-import pandas as pd
-import numpy as np
 from tqdm import tqdm
-from time import time
-import sys
 
 
 df = pd.read_csv(r"../datasets/water_quality.csv").dropna()

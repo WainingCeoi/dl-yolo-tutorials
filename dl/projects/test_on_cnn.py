@@ -1,11 +1,11 @@
-from PIL import Image
-import numpy as np
-import matplotlib.pyplot as plt
-
 import os
+
+import matplotlib.pyplot as plt
+import numpy as np
 import torch
-import torch.nn.functional as F
 import torch.nn as nn
+import torch.nn.functional as F
+from PIL import Image
 
 
 # Build CNN Model
