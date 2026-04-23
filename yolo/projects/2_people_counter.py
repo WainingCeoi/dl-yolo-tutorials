@@ -3,10 +3,9 @@ import cv2
 from ultralytics import YOLO
 from ultralytics.solutions import ObjectCounter
 
-
 # Config Parameters
-model = YOLO("../yolo_models/yolo26s.pt")
-cap = cv2.VideoCapture("../datasets/videos/people.mp4")
+model = YOLO("./yolo_models/yolo26s.pt")
+cap = cv2.VideoCapture("./datasets/videos/people.mp4")
 
 class_id = [0]
 confidence = 0.5
