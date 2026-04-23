@@ -35,10 +35,10 @@ class CNN (nn.Module):
 
 # Initial and Read Model
 model = CNN()
-model.load_state_dict(torch.load(r"../models/MNIST.pt"))
+model.load_state_dict(torch.load(r"./models/MNIST.pt"))
 
 # Collect Hand Write Number Images
-image_folder = r"../datasets/MNIST/hand_writing"
+image_folder = r"./datasets/MNIST/hand_writing"
 images = os.scandir(image_folder)
 correct = 0
 

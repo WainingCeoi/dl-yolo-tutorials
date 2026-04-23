@@ -10,7 +10,7 @@ from sklearn.model_selection import train_test_split
 from tqdm import tqdm
 
 
-df = pd.read_csv(r"../datasets/water_quality.csv").dropna()
+df = pd.read_csv(r"./datasets/water_quality.csv").dropna()
 
 assert df.isna().sum().sum() == 0
 X = df.drop(columns="Potability").astype(np.float32).to_numpy()
@@ -35,7 +35,7 @@ class fc_model(nn.Module):
 
 model = fc_model().to(device)
 criterion = nn.CrossEntropyLoss()
-optimizor = torch.optim.Adam(model.parameters(), lr=0.0001)
+optimizer = torch.optim.Adam(model.parameters(), lr=0.0001)
 
 epochs = 1000
 train_losses = []
@@ -53,9 +53,9 @@ for idx in pbar:
     accuracy = 100 * correct / len(y_train)
     train_accuracies.append(accuracy)
 
-    optimizor.zero_grad()
+    optimizer.zero_grad()
     loss.backward()
-    optimizor.step()
+    optimizer.step()
 
     run_time = time() - t0
     pbar.set_postfix({"Loss": f"{loss:.4f}", "Time": f"{run_time:.2f}s", "Accuracy": f"{accuracy:.2f}%"})
