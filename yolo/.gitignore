@@ -2,3 +2,5 @@
 /.idea/
 /yolo_models/
 /runs/
+
+.DS_Store
