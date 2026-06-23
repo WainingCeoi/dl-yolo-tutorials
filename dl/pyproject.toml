@@ -3,14 +3,12 @@ name = "deep-learning-exercise"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.14"
 dependencies = [
-    "matplotlib>=3.10.8",
-    "notebook>=7.5.5",
-    "numpy==1.26.4",
-    "pandas>=2.3.3",
-    "scikit-learn>=1.8.0",
-    "torch==2.2.2",
-    "torchvision==0.17.2",
-    "tqdm>=4.67.3",
+    "matplotlib>=3.11.0",
+    "notebook>=7.6.0",
+    "scikit-learn>=1.9.0",
+    "torch>=2.12.1",
+    "torchvision>=0.27.1",
+    "tqdm>=4.68.3",
 ]
