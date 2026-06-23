@@ -4,7 +4,7 @@ from ultralytics import YOLO
 from ultralytics.solutions import ObjectCounter
 
 # Load the pre-trained YOLO model
-model = YOLO("../yolo_models/yolo26s.pt")
+model = YOLO("./yolo_models/yolo26m.pt")
 cap = cv2.VideoCapture("./datasets/videos/cars.mp4")
 
 # Specific objects with string instead of theirs ID to enhance readability.
@@ -13,13 +13,19 @@ targeted_obj = ["car", "motorcycle", "bus", "truck"]
 classes_idx = [classes_name.index(obj) for obj in targeted_obj] # Obtain object ID
 
 confidence = 0.5
-device = "cpu"
+device = "mps"
 # Define Region of Interest (ROI)
 region = [[430, 260], [700, 260], [670, 600], [20, 600]]
 
 # Initial and configure car counter
-counter = ObjectCounter(model=model, region=region, classes=classes_idx, conf=confidence,
-                        device=device, show=True)
+counter = ObjectCounter(
+    model=model,
+    region=region,
+    classes=classes_idx,
+    conf=confidence,
+    device=device,
+    show=True,
+)
 
 
 while cap.isOpened():
