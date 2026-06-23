@@ -15,8 +15,7 @@ df = pd.read_csv(r"./datasets/water_quality.csv").dropna()
 assert df.isna().sum().sum() == 0
 X = df.drop(columns="Potability").astype(np.float32).to_numpy()
 y = df["Potability"].astype(np.int_).to_numpy()
-# device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
-device = torch.device("cpu")
+device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
 X_train, X_test, y_train, y_test = (torch.tensor(data).to(device) for data in train_test_split(X, y))
 
 class fc_model(nn.Module):
@@ -51,7 +50,7 @@ for idx in pbar:
     correct = 0
     correct = (y_pred.argmax(dim=1) == y_train).sum()
     accuracy = 100 * correct / len(y_train)
-    train_accuracies.append(accuracy)
+    train_accuracies.append(accuracy.cpu().item())
 
     optimizer.zero_grad()
     loss.backward()
